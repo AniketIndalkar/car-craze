@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR CRAZE</title>
+    <style>
+        body {
+            background-color: #2a2929;
+            padding: 10px 15px 12px 15px;
+        }
+        h1 {
+            display: block;
+            width: 100%;
+            font-family: fantasy;
+            letter-spacing: 3px;
+            text-align: center;
+            color: #E0E0E0;
+            background-color: #2a2929;
+            text-decoration: overline;
+            text-transform: capitalize;
+            text-shadow: 2px 2px #373735;
+            border-radius: 10px;
+        }
+        h2 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            letter-spacing: 3px;
+            text-align: center;
+            color: rgb(251, 165, 4);
+            background-color: #2a2929;
+            text-decoration: overline;
+            text-transform: capitalize;
+            text-shadow: 2px 2px #382e12;
+            border-radius: 10px;
+            height: 45px;
+            justify-content: center;
+            font-size: xx-large;
+        }
+        .container {
+            box-sizing: border-box;
+            margin-top: 0px;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 30px;
+        }
+        .container .car-box {
+            border: 1px solid #515458;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 40%;
+            margin-top: 20px;
+            transition: transform 0.5s;
+            animation-fill-mode: forwards; 
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        .container .car-box img {
+            width: 100%;
+        }
+        .container .car-box.visible {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            animation-delay: 0.1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container .car-box:hover {
+            transform: translate(0, -40px) scale(1.2);
+        }
+        .feature {
+            padding: 10px;
+            color: rgb(29, 110, 83);
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            animation-name: intro;
+            animation-duration: 2s;
+            animation-delay: 0.5s;
+        }
+        @keyframes intro {
+            0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+        }
+        form {
+            padding: 20px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium';
+            color: rgb(226, 150, 43);
+        }
+        a {
+            color: #3498DB;
+            font-family: 'Georgia', serif;
+        }
+        a:link {
+            color: rgb(0, 66, 128);
+            text-decoration: none;
+        }
+        a:hover {
+            color: #25be5d;
+            background-color: #efefef;
+        }
+        a:active {
+            color: #ffca3a;
+            background-color: #fcfbfb;
+        }
+        ul {
+            list-style: square inside none;
+        }
+        h1 img {
+            top: 23px;
+            position: fixed;
+            align-items: left;
+            width: 100px;
+            height: 40px;
+        }
+        label {
+            font-family: Arial;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"] {
+            border: 1px solid #b3c5e6;
+            background-color: #cedbf4;
+            color: #050000;
+            font-weight: bold;
+            border-radius: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        select {
+            border-radius: 10px;
+            border-color: #b3c5e6;
+            background-color: #cedbf4;
+        }
+        .logo {
+            background-color: #050000;
+            align-items: center;
+            animation-name: logoani;
+            animation-duration: 6.5s;
+        }
+        @keyframes logoani {
+            0% {
+                opacity: 0%;
+            }
+            20% {
+                opacity: 0%;
+            }
+            100% {
+                opacity: 100%;
+            }
+        }
+        nav ul {
+            border-radius: 10px;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #2a2929;
+            box-shadow: #d2caca;
+        }
+        nav ul li {
+            float: right;
+        }
+        nav ul li a {
+            display: block;
+            color: rgb(184, 154, 98);
+            text-align: center;
+            padding: 14px 16px;
+            font-family: fantasy;
+            background-color: #2a2929;
+            text-decoration: overline;
+            text-transform: capitalize;
+            text-shadow: 1px 1px #1a1712;
+            font-size: larger;
+        }
+        nav ul li a:hover {
+            background-color: #737070;
+            color: #fdfcfc;
+        }
+        #show {
+            color: rgb(251, 165, 4);
+            text-align: center;
+            font-size: x-large;
+            text-shadow: 1px 1px #382e12;
+            text-transform: capitalize;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        button {
+            background-color: #99a1b1;
+            border-radius: 23px;
+            border: none;
+            color: rgb(8, 0, 0);
+            width: 100px;
+            height: 26px;
+            font-size: 18px;
+            box-shadow: 2px 2px 5px #1e4f6e;
+            justify-content: center;
+            transition: background-color 0.15s, color 0.15s;
+        }
+        button:hover {
+            background-color: #149EF2;
+            color: white;
+            cursor: pointer;
+        }
+        #names {
+            text-align: center;
+            color: rgb(251, 165, 4);
+            text-shadow: 1px 1px #110d03;
+            font-size: x-large;
+            list-style: none;
+            display: flex;
+        } 
+        .car_name {
+            color: rgb(204, 171, 111);
+            text-align: center;
+            margin-top: 10px;
+            font-size:x-large;
+        }
+        .footer-box {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .footer-box.visible {
+        animation-name: slideIn;
+        animation-duration: 1s;
+        animation-delay: 0.2s;
+        animation-fill-mode: forwards;
+        }
+
+        @keyframes slideIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+           }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+            }
+            }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#2">Contact</a></li>
+            <li><a href="login.html">login</a></li>
+            <li><a href="order.html">Place Order</a></li>
+        </ul>
+    </nav>
+    <h1 id="home">
+        <img src="image/logo.jpg" alt="Logo">
+    </h1>
+    <div class="logo">
+        <img src="image/logo.jpg" onclick="alert('hi! there')" alt="Logo" style="width:600px;">
+        welcome to car craze.com
+    </div>
+    <p style="font-size: xx-large; text-align: center; color: rgb(209, 208, 208); margin-bottom: 0px;">
+        Introducing our new <span style="color: rgb(204, 171, 111); text-shadow: 1px 1px #382e12;">CARS</span>
+    </p>
+    <div class="container">
+        <div class="car-box">
+            <img src="image/gt.webp" alt="Car 1">
+            <div class="car_name">GT</div>
+            <div>
+                <button type="button" onclick="window.location.href='order.html'">BUY NOW</button>
+            </div>
+        </div>
+        <div class="car-box">
+            <img src="image/porsche.webp" alt="Car 2">
+            <div class="car_name">Porsche</div>
+            <div>
+                <button type="button" onclick="window.location.href='order.html'">BUY NOW</button>
+            </div>            
+        </div>
+    </div>
+    <div class="container">
+        <div class="car-box">
+            <img src="image/bugati.webp" alt="Car 1">
+            <div class="car_name">Bugati</div>
+            <div>
+                <button type="button" onclick="window.location.href='order.html'">BUY NOW</button>
+            </div>
+        </div>
+        <div class="car-box">
+            <img src="image/ferrari.webp" alt="Car 2">
+            <div class="car_name">Ferrari</div>
+            <div>
+                <button type="button" onclick="window.location.href='order.html'">BUY NOW</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="car-box">
+            <img src="image/gt3.webp" alt="Car 1">
+            <div class="car_name">GT3</div>
+            <div>
+                <button type="button" onclick="window.location.href='order.html'">BUY NOW</button>
+            </div>            
+        </div>
+        <div class="car-box">
+            <img src="image/nissan gt3.webp" alt="Car 2">
+            <div class="car_name">Nissan gt3</div>
+            <div>
+                <button type="button" onclick="window.location.href='order.html'">BUY NOW</button>
+            </div>            
+        </div>
+    </div>
+    <footer> 
+        <div class="footer-box" style="border: 1px solid gray; border-radius: 10px;">
+            <p style="color: #cecfd1; margin-left: 10px;">WEBSITE DESIGN:<br><br>
+                HTML, CSS: Aniket Indalkar, roll no. 97.<a href="https://github.com/AniketIndalkar">Github</a><br>
+                JavaScript: Rishabh Jaiswar, roll no.113.<a>Github</a><br>
+                Database: Varun Pawar, roll no.107.<a>Github</a><br>
+                <br>
+                GIVE US YOUR VALUABLE <a href="feedback.html">FEEDBACK</a>, THANK YOU
+            </p>
+        </div>
+        <p id="2" style="color: #cecfd1;">copyright © Aniket Indalkar, Varun Pawar, Rishabh  - all rights reserved 
+        <a href="feedback.html" target="_blank">contact us</a></p>
+    </footer>
+     
+
+    <script>
+        // Function to add the observer and start watching for elements
+        function observeElements() {
+            const carBoxes = document.querySelectorAll('.car-box');
+            const footerBox = document.querySelector('.footer-box');
+    
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once the animation is triggered
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+    
+            carBoxes.forEach(carBox => {
+                observer.observe(carBox);
+            });
+    
+            if (footerBox) {
+                observer.observe(footerBox);
+            }
+        }
+    
+        // Ensure observer is applied on load
+        window.addEventListener('load', observeElements);
+        // Reapply observer when scrolling (optional)
+        window.addEventListener('scroll', observeElements);
+    </script>
+    
+    
+</body>
+</html>

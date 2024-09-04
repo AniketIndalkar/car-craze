@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #ffca3a;
+        }
+
+        form {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        label {
+            color: #e0e0e0;
+            margin-right: 10px;
+        }
+
+        select, input {
+            background-color: #333;
+            color: #e0e0e0;
+            border: 1px solid #444;
+            border-radius: 4px;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #ffca3a;
+            color: #121212;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e0a830;
+        }
+
+        footer {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 10px;
+        }
+
+        footer a {
+            color: #ffca3a;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        #show {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2 id="1"><b>Order Now!</b></h2>
+    <form action="#" method="post">
+        <label for="color">Color:</label>
+        <select id="color" name="color">
+            <option value="Tomato">Tomato Red</option>
+            <option value="SteelBlue">SteelBlue</option>
+            <option value="MediumSeaGreen">MediumSeaGreen</option>
+            <option value="Gold">Gold</option>
+            <option value="SlateBlue">SlateBlue</option>
+            <option value="Coral">Coral</option>
+        </select>
+        <label for="car">Car:</label>
+        <select id="car" name="car">
+            <option value="Bugatti">Bugatti</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="GT">GT</option>
+            <option value="Nissan GTR">Nissan GTR</option>
+            <option value="Porsche">Porsche</option>
+            <option value="GT3">GT3</option>
+        </select><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <button type="button" onclick="display()">Confirm Order</button>
+    </form>
+    <p id="show"></p>
+
+    <footer>
+        <p id="2">copyright © Aniket Indalkar,Varun Pawar, Rishabh Jaiswar - all rights reserved 
+    </footer> 
+
+    <script>
+        function display() {
+            let name = document.getElementById('name').value;
+            let car = document.getElementById('car').value;
+            let color = document.getElementById('color').value;
+
+            let showElement = document.getElementById('show');
+            showElement.textContent = "YAYY!!!\n" + name + " your order has been placed!! for a " + color + " " + car;
+            showElement.style.color = color;
+        }
+    </script>  
+</body>
+</html>
